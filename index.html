@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhã Phương | Portfolio</title>
+    <!-- Font Awesome CDN cho biểu tượng mạng xã hội -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Playfair Display (cho tiêu đề) và Poppins (cho nội dung) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      /* --- CSS Reset & Base Styles --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #1a1a1a;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+
+      /* --- Layout Main Container --- */
+      .container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+      }
+
+      /* --- Left Panel (Image & Gradient) --- */
+      .left-panel {
+        width: 50%;
+        position: relative;
+        background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); /* Đổi màu gradient nhẹ nhàng hơn */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      /* Hiệu ứng nền mờ */
+      .left-panel::before,
+      .left-panel::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: 0;
+      }
+
+      .left-panel::before {
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.3);
+        top: -50px;
+        left: -50px;
+      }
+
+      .header-brand {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        z-index: 2;
+        font-weight: 600;
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-image-container {
+        position: relative;
+        z-index: 1;
+        width: 350px;
+        height: 450px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        transition: transform 0.5s ease;
+      }
+
+      .profile-image-container:hover {
+        transform: scale(1.02);
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .footer-left {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+        z-index: 2;
+      }
+
+      /* --- Right Panel (Content) --- */
+      .right-panel {
+        width: 50%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 40px;
+      }
+
+      .top-nav-right {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .content-wrapper {
+        max-width: 450px;
+        width: 100%;
+        text-align: left;
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        line-height: 1.2;
+        font-weight: 400;
+        margin-bottom: 20px;
+        color: #111;
+      }
+
+      p.description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        color: #555;
+      }
+
+      /* --- Buttons (Social Links) --- */
+      .link-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      .btn-link {
+        display: flex; /* Flexbox để căn giữa icon và text */
+        align-items: center;
+        justify-content: center;
+        gap: 12px; /* Khoảng cách giữa icon và chữ */
+
+        width: 100%;
+        padding: 16px 0;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 50px; /* Bo tròn nút mềm mại hơn */
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        cursor: pointer;
+        color: #333;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-link i {
+        font-size: 1.2rem;
+        width: 20px; /* Cố định chiều rộng icon để chữ thẳng hàng */
+        text-align: center;
+      }
+
+      /* Màu sắc riêng cho từng icon khi hover (hoặc luôn hiện) */
+      .fa-facebook-f {
+        color: #1877f2;
+      }
+      .fa-instagram {
+        color: #e4405f;
+      }
+      .fa-tiktok {
+        color: #000000;
+      }
+      .fa-phone-volume {
+        color: #0088ff;
+      } /* Màu tượng trưng cho Zalo */
+
+      .btn-link:hover {
+        background-color: #f9f9f9;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        border-color: #333;
+      }
+
+      /* Footer text */
+      .footer-right {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #888;
+      }
+
+      /* --- Responsive Design (Mobile) --- */
+      @media (max-width: 900px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .left-panel {
+          width: 100%;
+          height: 50vh;
+          padding: 60px 20px;
+        }
+
+        .header-brand {
+          top: 20px;
+          left: 20px;
+        }
+
+        .profile-image-container {
+          width: 250px;
+          height: 350px;
+        }
+
+        .right-panel {
+          width: 100%;
+          min-height: 50vh;
+          padding: 40px 25px 80px 25px;
+        }
+
+        .top-nav-right {
+          display: none;
+        }
+
+        .content-wrapper {
+          text-align: center;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .footer-left {
+          display: none;
+        }
+
+        .footer-right {
+          position: relative;
+          margin-top: 40px;
+          margin-bottom: 20px;
+        }
+
+        .btn-link {
+          padding: 14px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Phần Bên Trái: Ảnh -->
+      <header class="left-panel">
+        <div class="header-brand">NHÃ PHƯƠNG</div>
+
+        <div class="profile-image-container">
+          <!-- Ảnh đại diện placeholder -->
+          <img src="/avatar.jpg" alt="Nhã Phương Portrait" class="profile-image" />
+        </div>
+
+        <div class="footer-left">Chính sách Quyền riêng tư</div>
+      </header>
+
+      <!-- Phần Bên Phải: Nội dung -->
+      <main class="right-panel">
+        <div class="content-wrapper">
+          <h1>Xin chào,<br />mình là Nhã Phương.</h1>
+          <p class="description">
+            Người sáng tạo nội dung tự do.<br />
+            Kết nối với mình qua các nền tảng bên dưới nhé!
+          </p>
+
+          <!-- Các nút điều hướng (Đã thay đổi thành Social Links) -->
+          <div class="link-container">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/cuatreconv" target="_blank" class="btn-link">
+              <i class="fab fa-facebook-f"></i>
+              <span>Facebook</span>
+            </a>
+
+            <!-- Zalo (Sử dụng icon điện thoại) -->
+            <a href="tel:0916466669" class="btn-link">
+              <i class="fas fa-phone-volume"></i>
+              <span>Zalo / Hotline</span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/cua.trecon/" target="_blank" class="btn-link">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+
+            <!-- Tiktok -->
+            <a href="https://www.tiktok.com/@cuatrecon?is_from_webapp=1&sender_device=pc" target="_blank" class="btn-link">
+              <i class="fab fa-tiktok"></i>
+              <span>TikTok</span>
+            </a>
+          </div>
+
+          <!-- Đã xóa phần .social-icons ở dưới cùng theo yêu cầu -->
+        </div>
+
+        <div class="footer-right">© 2025 bản quyền của Nhã Phương.</div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Trang của Nhã Phương đã tải xong.");
+
+        // Hiệu ứng xuất hiện mượt mà cho nội dung
+        const content = document.querySelector(".content-wrapper");
+        content.style.opacity = "0";
+        content.style.transform = "translateY(15px)";
+        content.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+
+        setTimeout(() => {
+          content.style.opacity = "1";
+          content.style.transform = "translateY(0)";
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
