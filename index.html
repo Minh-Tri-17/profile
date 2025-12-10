@@ -111,12 +111,14 @@
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.8);
         z-index: 2;
+        animation: slideInFromLeft 1s ease-out forwards;
       }
 
       /* --- Right Panel (Content) --- */
       .right-panel {
         width: 50%;
         background-color: #fff;
+        animation: slideInFromRight 1s ease-out forwards;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -147,6 +149,9 @@
         font-weight: 400;
         margin-bottom: 20px;
         color: #111;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 0.8s;
       }
 
       p.description {
@@ -154,6 +159,9 @@
         line-height: 1.6;
         margin-bottom: 40px;
         color: #555;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 1s;
       }
 
       /* --- Buttons (Social Links) --- */
@@ -212,6 +220,55 @@
         transform: translateY(-3px);
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
         border-color: #333;
+      }
+      .btn-link {
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out forwards;
+      }
+      .btn-link:nth-child(1) {
+        animation-delay: 0.8s;
+      }
+      .btn-link:nth-child(2) {
+        animation-delay: 1s;
+      }
+      .btn-link:nth-child(3) {
+        animation-delay: 1.2s;
+      }
+      .btn-link:nth-child(4) {
+        animation-delay: 1.4s;
+      }
+
+      /* --- Animation Keyframes --- */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideInFromLeft {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
 
       /* Footer text */
@@ -348,16 +405,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         console.log("Trang của Nhã Phương đã tải xong.");
 
-        // Hiệu ứng xuất hiện mượt mà cho nội dung
-        const content = document.querySelector(".content-wrapper");
-        content.style.opacity = "0";
-        content.style.transform = "translateY(15px)";
-        content.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-
-        setTimeout(() => {
-          content.style.opacity = "1";
-          content.style.transform = "translateY(0)";
-        }, 100);
+        // Animations are now handled purely by CSS.
       });
     </script>
   </body>
